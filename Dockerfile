@@ -8,7 +8,7 @@ ENV CI "true"
 RUN apt-get update && \
   apt-get install -y locales && \
   locale-gen en_US.UTF-8 && \
-  apt-get install -y wget unzip locales ruby openjdk-8-jdk qemu-kvm
+  apt-get install -y wget unzip locales ruby ruby-dev openjdk-8-jdk qemu-kvm
 
 RUN gem install bundler --no-document
 
