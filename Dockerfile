@@ -17,13 +17,12 @@ ARG androidSdkRoot=/opt/android-sdk
 ENV ANDROID_SDK_ROOT=${androidSdkRoot}
 ENV ANDROID_HOME=${androidSdkRoot}
 ENV ADB_INSTALL_TIMEOUT=120
+ENV PATH=${ANDROID_SDK_ROOT}/cmdline-tools/tools/bin:${ANDROID_SDK_ROOT}/tools:${ANDROID_SDK_ROOT}/emulator:$ANDROID_HOME/platform-tools:${PATH}
 
 RUN mkdir ${androidSdkRoot} && \
   wget https://dl.google.com/android/repository/commandlinetools-linux-6514223_latest.zip -O commandlinetools-linux.zip && \
   unzip commandlinetools-linux.zip -d ${androidSdkRoot}/cmdline-tools && \
   rm commandlinetools-linux.zip
-
-ENV PATH=${ANDROID_SDK_ROOT}/cmdline-tools/tools/bin:${ANDROID_SDK_ROOT}/tools:${ANDROID_SDK_ROOT}/emulator:${PATH}
 
 RUN (yes | sdkmanager --licenses) && \
   sdkmanager "emulator" "platform-tools"
