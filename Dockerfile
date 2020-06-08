@@ -4,6 +4,7 @@ ENV LANG "en_US.UTF-8"
 ENV LANGUAGE "en_US.UTF-8"
 ENV LC_ALL="en_US.UTF-8"
 ENV CI "true"
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
   apt-get install -y locales && \
